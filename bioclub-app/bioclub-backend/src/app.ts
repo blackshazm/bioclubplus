@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db';
 import { globalErrorHandler } from './middlewares/errorHandler.middleware';
 import { defaultLimiter } from './middlewares/rateLimiter.middleware';
+import authRoutes from './routes/auth.routes';
 
 // Carrega variáveis de ambiente do arquivo .env
 dotenv.config();
@@ -39,8 +40,11 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-// Placeholder para rotas da API (serão adicionadas depois)
-// Ex: app.use('/api/auth', authRoutes);
+// Rotas da API
+app.use('/api/auth', authRoutes); // Adicionar esta linha
+
+// Placeholder para outras rotas da API (serão adicionadas depois)
+// Ex: app.use('/api/users', userRoutes);
 
 // Placeholder para middleware de tratamento de erros global (será adicionado depois)
 // app.use(globalErrorHandler);
